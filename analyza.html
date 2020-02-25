@@ -1,0 +1,5324 @@
+<!DOCTYPE HTML []>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="Generator" content="github.com/hyperlinq/hyperlinq" />
+    <style type="text/css">
+        body {
+            margin: 0.3em 0.3em 0.4em 0.4em;
+            font-family: Verdana;
+            font-size: 80%;
+            background: white
+        }
+        
+        p,
+        pre {
+            margin: 0;
+            padding: 0;
+            font-family: Verdana
+        }
+        
+        table {
+            border-collapse: collapse;
+            border: 2px solid #17b;
+            margin: 0.3em 0.2em
+        }
+        
+        table.limit {
+            border-bottom-color: #c31
+        }
+        
+        table.expandable {
+            border-bottom-style: dashed
+        }
+        
+        table.error {
+            border-bottom-width: 4px
+        }
+        
+        td,
+        th {
+            vertical-align: top;
+            border: 1px solid #aaa;
+            padding: 0.1em 0.2em;
+            margin: 0
+        }
+        
+        th {
+            text-align: left;
+            background-color: #ddd;
+            border: 1px solid #777;
+            font-family: tahoma;
+            font-size: .9em;
+            font-weight: bold
+        }
+        
+        th.member {
+            padding: 0.1em 0.2em 0.1em 0.2em
+        }
+        
+        td.typeheader {
+            font-family: tahoma;
+            font-weight: bold;
+            background-color: #17b;
+            color: white;
+            padding: 0 0.2em 0.15em 0.1em
+        }
+        
+        td.n {
+            text-align: right
+        }
+        
+        a:link.typeheader,
+        a:visited.typeheader,
+        a:link.extenser,
+        a:visited.extenser,
+        a:link.fixedextenser,
+        a:visited.fixedextenser {
+            font-family: tahoma;
+            font-size: .9em;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: #17b;
+            color: white;
+            float: left
+        }
+        
+        a:link.difheader,
+        a:visited.difheader {
+            color: #ff8
+        }
+        
+        a:link.extenser,
+        a:visited.extenser,
+        a:link.fixedextenser,
+        a:visited.fixedextenser {
+            float: right;
+            padding-left: 2pt;
+            margin-left: 4pt
+        }
+        
+        span.typeglyph,
+        span.typeglyphx {
+            padding: 0 0.2em 0 0;
+            margin: 0
+        }
+        
+        span.extenser,
+        span.extenserx,
+        span.fixedextenser {
+            margin-top: 1.2pt
+        }
+        
+        span.typeglyph,
+        span.extenser,
+        span.fixedextenser {
+            font-family: webdings
+        }
+        
+        span.fixedextenser {
+            display: none;
+            position: fixed;
+            right: 6px
+        }
+        
+        td.typeheader:hover .fixedextenser {
+            display: block
+        }
+        
+        span.typeglyphx,
+        span.extenserx {
+            font-family: arial;
+            font-weight: bold;
+            margin: 2px
+        }
+        
+        table.group {
+            border: none;
+            margin: 0
+        }
+        
+        td.group {
+            border: none;
+            padding: 0 0.1em
+        }
+        
+        div.spacer {
+            margin: 0.6em 0
+        }
+        
+        table.headingpresenter {
+            border: none;
+            border-left: 3px dotted #1a5;
+            margin: .8em 0 1em 0.15em
+        }
+        
+        th.headingpresenter {
+            font-family: Arial;
+            border: none;
+            padding: 0 0 0.2em 0.5em;
+            background-color: white;
+            color: green;
+            font-size: 1.1em
+        }
+        
+        td.headingpresenter {
+            border: none;
+            padding: 0 0 0 0.6em
+        }
+        
+        td.summary {
+            background-color: #def;
+            color: #024;
+            font-family: Tahoma;
+            padding: 0 0.1em 0.1em 0.1em
+        }
+        
+        td.columntotal {
+            font-family: Tahoma;
+            background-color: #eee;
+            font-weight: bold;
+            color: #17b;
+            font-size: .9em;
+            text-align: right
+        }
+        
+        span.graphbar {
+            background: #17b;
+            color: #17b;
+            margin-left: -2px;
+            margin-right: -2px
+        }
+        
+        a:link.graphcolumn,
+        a:visited.graphcolumn {
+            color: #17b;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: Arial;
+            font-size: 1.1em;
+            letter-spacing: -0.2em;
+            margin-left: 0.1em;
+            margin-right: 0.2em
+        }
+        
+        a:link.collection,
+        a:visited.collection {
+            color: green
+        }
+        
+        a:link.reference,
+        a:visited.reference {
+            color: blue
+        }
+        
+        i {
+            color: green
+        }
+        
+        em {
+            color: red
+        }
+        
+        .highlight {
+            background: #ff8
+        }
+        
+        .fixedfont {
+            font-family: Consolas, monospace
+        }
+        
+        code {
+            font-family: Consolas
+        }
+        
+        code.xml b {
+            color: blue;
+            font-weight: normal
+        }
+        
+        code.xml i {
+            color: maroon;
+            font-weight: normal;
+            font-style: normal
+        }
+        
+        code.xml em {
+            color: red;
+            font-weight: normal;
+            font-style: normal
+        }
+        
+        span.cc {
+            background: #666;
+            color: white;
+            margin: 0 1.5px;
+            padding: 0 1px;
+            font-family: Consolas, monospace;
+            border-radius: 3px
+        }
+        
+        .difadd {
+            background: #d3f3d3
+        }
+        
+        .difremove {
+            background: #f3d8d8
+        }
+        
+        ::-ms-clear {
+            display: none
+        }
+        
+        input,
+        textarea,
+        button,
+        select {
+            font-family: Verdana;
+            font-size: 1em;
+            padding: .2em
+        }
+        
+        button {
+            padding: .2em .4em
+        }
+        
+        input,
+        textarea,
+        select {
+            margin: .15em 0
+        }
+        
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin: 0 0.4em 0 0;
+            height: 0.9em;
+            width: 0.9em
+        }
+        
+        input[type="radio"]:focus,
+        input[type="checkbox"]:focus {
+            outline: thin dotted red
+        }
+        
+        .checkbox-label {
+            vertical-align: middle;
+            position: relative;
+            bottom: .07em;
+            margin-right: .5em
+        }
+        
+        fieldset {
+            margin: 0 .2em .4em .1em;
+            border: 1pt solid #aaa;
+            padding: .1em .6em .4em .6em
+        }
+        
+        legend {
+            padding: .2em .1em
+        }
+    </style>
+
+</head>
+
+<body>participants: 34
+    <br />zprav celkem: 508278
+    <br />zpravy per user
+    <br />
+    <div class="spacer">
+        <table id="t1">
+            <tr>
+                <td class="typeheader" colspan="3">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+                <th title="System.Int32">Item3</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">88687</td>
+                <td class="n">17</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">66918</td>
+                <td class="n">13</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">56037</td>
+                <td class="n">11</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">55740</td>
+                <td class="n">10</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">36299</td>
+                <td class="n">7</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">35961</td>
+                <td class="n">7</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">30521</td>
+                <td class="n">6</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">29840</td>
+                <td class="n">5</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">24833</td>
+                <td class="n">4</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">22974</td>
+                <td class="n">4</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">15538</td>
+                <td class="n">3</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">14080</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">12152</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">9865</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">2214</td>
+                <td class="n">0</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">1201</td>
+                <td class="n">0</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=502860 Average=31428.75" class="columntotal">502860</td>
+                <td title="Total=92 Average=5.75" class="columntotal">92</td>
+            </tr>
+        </table>
+    </div>nejvic reakci dostal
+    <br />Total
+    <br />
+    <div class="spacer">
+        <table id="t2">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">14561</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">10684</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">8662</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">8614</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">7281</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">4991</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">4956</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">3528</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">3231</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">2580</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">2156</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">2117</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">1796</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">1349</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">316</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">178</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=77000 Average=4812.5" class="columntotal">77000</td>
+            </tr>
+        </table>
+    </div>ReactionPerMessage
+    <br />
+    <div class="spacer">
+        <table id="t3">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Double&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Double">Item2</th>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">0.237306812859858</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">0.19167563688554</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">0.182057780030411</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">0.166085790884719</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">0.164184153258087</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">0.150355113636364</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">0.148209825145712</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">0.142728093947606</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">0.142069021060685</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">0.138789243903117</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">0.138756596730596</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">0.129932009208202</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">0.129442003646254</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">0.112300861843823</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">0.111010533245556</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">0.105861537957472</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=2.390765014244002 Average=0.1494" class="columntotal">2.390765014244002</td>
+            </tr>
+        </table>
+    </div>top 5 prispekvu GC
+    <br />
+    <div class="spacer">
+        <table id="t4">
+            <tr>
+                <td class="typeheader" colspan="9">IEnumerable&lt;Message&gt; (5 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">sender_name</th>
+                <th title="System.DateTime">Timestamp</th>
+                <th title="System.String">content</th>
+                <th title="System.String">type</th>
+                <th title="UserQuery+Photo[]">photos</th>
+                <th title="UserQuery+Share">share</th>
+                <th title="UserQuery+Reaction[]">reactions</th>
+                <th title="UserQuery+Gif[]">gifs</th>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td>8/16/2019 7:46:20 AM</td>
+                <td><i>null</i></td>
+                <td>Generic</td>
+                <td>
+                    <table id="t5">
+                        <tr>
+                            <td class="typeheader" colspan="3">Photo[] (1 item)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">uri</th>
+                            <th title="System.DateTime">Timestamp</th>
+                        </tr>
+                        <tr>
+                            <td><img src="photos/68805464_366990577564809_7739451400043626496_n_366990557564811.jpg" alt="photos/68805464_366990577564809_7739451400043626496_n_366990557564811.jpg"></td>
+                            <td>1/19/1970 2:59:01 AM</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+                <td>
+                    <table id="t6">
+                        <tr>
+                            <td class="typeheader" colspan="2">Reaction[] (9 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">reaction</th>
+                            <th title="System.String">actor</th>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jakub Král</td>
+                        </tr>
+                        <tr>
+                            <td>👎</td>
+                            <td>Vojta Kotek</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Michal Žďánský</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jiří Kracík</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Lukáš Novotný</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Otto Hartvich</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jakub Vinni</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Jerry Siera</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Aladar Grülhoven</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td>12/6/2018 10:17:34 AM</td>
+                <td><i>null</i></td>
+                <td>Generic</td>
+                <td>
+                    <table id="t7">
+                        <tr>
+                            <td class="typeheader" colspan="3">Photo[] (1 item)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">uri</th>
+                            <th title="System.DateTime">Timestamp</th>
+                        </tr>
+                        <tr>
+                            <td><img src="photos/47432197_570266706778146_8064867487079989248_n_570266683444815.jpg" alt="photos/47432197_570266706778146_8064867487079989248_n_570266683444815.jpg"></td>
+                            <td>1/18/1970 8:54:51 PM</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+                <td>
+                    <table id="t8">
+                        <tr>
+                            <td class="typeheader" colspan="2">Reaction[] (9 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">reaction</th>
+                            <th title="System.String">actor</th>
+                        </tr>
+                        <tr>
+                            <td>😍</td>
+                            <td>Jakub Král</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Lukáš IA Seyček</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Vojta Kotek</td>
+                        </tr>
+                        <tr>
+                            <td>😮</td>
+                            <td>Michal Žďánský</td>
+                        </tr>
+                        <tr>
+                            <td>😍</td>
+                            <td>Jiří Kracík</td>
+                        </tr>
+                        <tr>
+                            <td>😍</td>
+                            <td>Jakub Michalik</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Jakub Vinni</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Jerry Siera</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Aladar Grülhoven</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td>4/8/2019 9:08:28 AM</td>
+                <td><i>null</i></td>
+                <td>Generic</td>
+                <td>
+                    <table id="t9">
+                        <tr>
+                            <td class="typeheader" colspan="3">Photo[] (1 item)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">uri</th>
+                            <th title="System.DateTime">Timestamp</th>
+                        </tr>
+                        <tr>
+                            <td><img src="photos/56452009_2102543003148916_7889654416498753536_n_2102542996482250.png" alt="photos/56452009_2102543003148916_7889654416498753536_n_2102542996482250.png"></td>
+                            <td>1/18/1970 11:51:54 PM</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+                <td>
+                    <table id="t10">
+                        <tr>
+                            <td class="typeheader" colspan="2">Reaction[] (8 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">reaction</th>
+                            <th title="System.String">actor</th>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jakub Král</td>
+                        </tr>
+                        <tr>
+                            <td>😍</td>
+                            <td>Vojta Kotek</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jiří Kracík</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Lukáš Novotný</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Robert Tuharský</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Otto Hartvich</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jakub Vinni</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Aladar Grülhoven</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+            </tr>
+            <tr>
+                <td>Martin Bém</td>
+                <td>12/23/2019 8:50:27 PM</td>
+                <td><i>null</i></td>
+                <td>Generic</td>
+                <td>
+                    <table id="t11">
+                        <tr>
+                            <td class="typeheader" colspan="3">Photo[] (1 item)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">uri</th>
+                            <th title="System.DateTime">Timestamp</th>
+                        </tr>
+                        <tr>
+                            <td><img src="photos/81224685_791904601254044_6894191893341536256_n_2287332951564068.jpg" alt="photos/81224685_791904601254044_6894191893341536256_n_2287332951564068.jpg"></td>
+                            <td>1/19/1970 6:05:34 AM</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+                <td>
+                    <table id="t12">
+                        <tr>
+                            <td class="typeheader" colspan="2">Reaction[] (8 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">reaction</th>
+                            <th title="System.String">actor</th>
+                        </tr>
+                        <tr>
+                            <td>😍</td>
+                            <td>Jakub Král</td>
+                        </tr>
+                        <tr>
+                            <td>😍</td>
+                            <td>Lukáš IA Seyček</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Jiří Kracík</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Lukáš Novotný</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Jakub Michalik</td>
+                        </tr>
+                        <tr>
+                            <td>😍</td>
+                            <td>Otto Hartvich</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Jakub Vinni</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Aladar Grülhoven</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td>7/12/2018 4:42:04 PM</td>
+                <td><i>null</i></td>
+                <td>Generic</td>
+                <td>
+                    <table id="t13">
+                        <tr>
+                            <td class="typeheader" colspan="3">Photo[] (1 item)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">uri</th>
+                            <th title="System.DateTime">Timestamp</th>
+                        </tr>
+                        <tr>
+                            <td><img src="photos/37117239_10209288598011933_7889667984300441600_n_10209288597971932.jpg" alt="photos/37117239_10209288598011933_7889667984300441600_n_10209288597971932.jpg"></td>
+                            <td>1/18/1970 5:23:33 PM</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+                <td>
+                    <table id="t14">
+                        <tr>
+                            <td class="typeheader" colspan="2">Reaction[] (8 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">reaction</th>
+                            <th title="System.String">actor</th>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Peter Lech</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jiří Kracík</td>
+                        </tr>
+                        <tr>
+                            <td>😍</td>
+                            <td>Lukáš Novotný</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Robert Tuharský</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jakub Matas</td>
+                        </tr>
+                        <tr>
+                            <td>👍</td>
+                            <td>Jakub Michalik</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jakub Vinni</td>
+                        </tr>
+                        <tr>
+                            <td>😆</td>
+                            <td>Jerry Siera</td>
+                        </tr>
+                    </table>
+                </td>
+                <td><i>null</i></td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=7773295495142 Average=1554659099028.4" class="columntotal">7773295495142</td>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Totals" class="columntotal"></td>
+            </tr>
+        </table>
+    </div>nejvic reakci dal
+    <br />Total
+    <br />
+    <div class="spacer">
+        <table id="t15">
+            <tr>
+                <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">16996</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">8890</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">8668</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">6958</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">6602</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">6516</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">5989</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">5354</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">3703</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">2388</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">2101</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">1127</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">682</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">404</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">379</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">58</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=76815 Average=4800.9375" class="columntotal">76815</td>
+            </tr>
+        </table>
+    </div>ReactionPerMessage
+    <br />
+    <div class="spacer">
+        <table id="t16">
+            <tr>
+                <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Double&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Double">Item2</th>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">0.375367460719716</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">0.357991382434664</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">0.233046052058849</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">0.218364611260054</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">0.191640262947219</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">0.171183378500452</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">0.164990771095622</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">0.14921875</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">0.12953166562061</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">0.1241679604547</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">0.118442770003588</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">0.092741935483871</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">0.0782412109694964</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">0.048293089092423</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">0.0438923928433518</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">0.0112343928144379</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=2.5083480862990541 Average=0.1568" class="columntotal">2.5083480862990541</td>
+            </tr>
+        </table>
+    </div>nejbohatsi slovnik (unikatni slova)
+    <br />Total
+    <br />
+    <div class="spacer">
+        <table id="t17">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">90746</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">69002</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">54634</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">52353</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">41969</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">38948</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">37101</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">33749</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">31986</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">27647</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">26302</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">20137</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">19203</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">14109</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">7294</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">4141</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=569321 Average=35582.5625" class="columntotal">569321</td>
+            </tr>
+        </table>
+    </div>top 30 nejpouzivanejsich slov (delsi nez 3 znaky)
+    <br />
+    <div class="spacer">
+        <table id="t18">
+            <tr>
+                <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (30 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>jsem</td>
+                <td class="n">22927</td>
+            </tr>
+            <tr>
+                <td>jako</td>
+                <td class="n">12270</td>
+            </tr>
+            <tr>
+                <td>taky</td>
+                <td class="n">10650</td>
+            </tr>
+            <tr>
+                <td>bych</td>
+                <td class="n">8545</td>
+            </tr>
+            <tr>
+                <td>bude</td>
+                <td class="n">8230</td>
+            </tr>
+            <tr>
+                <td>jsou</td>
+                <td class="n">7867</td>
+            </tr>
+            <tr>
+                <td>nebo</td>
+                <td class="n">7855</td>
+            </tr>
+            <tr>
+                <td>toho</td>
+                <td class="n">6727</td>
+            </tr>
+            <tr>
+                <td>fakt</td>
+                <td class="n">6489</td>
+            </tr>
+            <tr>
+                <td>Jakub</td>
+                <td class="n">6409</td>
+            </tr>
+            <tr>
+                <td>kdyz</td>
+                <td class="n">5663</td>
+            </tr>
+            <tr>
+                <td>neni</td>
+                <td class="n">5388</td>
+            </tr>
+            <tr>
+                <td>když</td>
+                <td class="n">5237</td>
+            </tr>
+            <tr>
+                <td>karty</td>
+                <td class="n">4626</td>
+            </tr>
+            <tr>
+                <td>teda</td>
+                <td class="n">4181</td>
+            </tr>
+            <tr>
+                <td>dneska</td>
+                <td class="n">4172</td>
+            </tr>
+            <tr>
+                <td>sent</td>
+                <td class="n">4127</td>
+            </tr>
+            <tr>
+                <td>tohle</td>
+                <td class="n">3943</td>
+            </tr>
+            <tr>
+                <td>takze</td>
+                <td class="n">3608</td>
+            </tr>
+            <tr>
+                <td>dost</td>
+                <td class="n">3601</td>
+            </tr>
+            <tr>
+                <td>bylo</td>
+                <td class="n">3531</td>
+            </tr>
+            <tr>
+                <td>ještě</td>
+                <td class="n">3410</td>
+            </tr>
+            <tr>
+                <td>budu</td>
+                <td class="n">3232</td>
+            </tr>
+            <tr>
+                <td>tady</td>
+                <td class="n">3095</td>
+            </tr>
+            <tr>
+                <td>tomu</td>
+                <td class="n">3069</td>
+            </tr>
+            <tr>
+                <td>lidi</td>
+                <td class="n">3007</td>
+            </tr>
+            <tr>
+                <td>treba</td>
+                <td class="n">2966</td>
+            </tr>
+            <tr>
+                <td>někdo</td>
+                <td class="n">2964</td>
+            </tr>
+            <tr>
+                <td>jestli</td>
+                <td class="n">2900</td>
+            </tr>
+            <tr>
+                <td>jinak</td>
+                <td class="n">2862</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=173551 Average=5785.0333" class="columntotal">173551</td>
+            </tr>
+        </table>
+    </div>top 30 nejpouzivanejsich slov (delsi nez 3 znaky - prd tam stejne nebyl)
+    <br />
+    <div class="spacer">
+        <table id="t19">
+            <tr>
+                <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,List&lt;ValueTuple&lt;String,Int32&gt;&gt;&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="List&lt;ValueTuple&lt;System.String,System.Int32&gt;&gt;">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td>
+                    <table id="t20">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">3373</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">2148</td>
+                        </tr>
+                        <tr>
+                            <td>Archivář</td>
+                            <td class="n">2060</td>
+                        </tr>
+                        <tr>
+                            <td>análů</td>
+                            <td class="n">2060</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">1690</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">1607</td>
+                        </tr>
+                        <tr>
+                            <td>este</td>
+                            <td class="n">1585</td>
+                        </tr>
+                        <tr>
+                            <td>sent</td>
+                            <td class="n">1575</td>
+                        </tr>
+                        <tr>
+                            <td>kdyz</td>
+                            <td class="n">1565</td>
+                        </tr>
+                        <tr>
+                            <td>fakt</td>
+                            <td class="n">1557</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=19220 Average=1922" class="columntotal">19220</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td>
+                    <table id="t21">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">3261</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">2032</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">1613</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">1576</td>
+                        </tr>
+                        <tr>
+                            <td>jsou</td>
+                            <td class="n">1500</td>
+                        </tr>
+                        <tr>
+                            <td>neni</td>
+                            <td class="n">1448</td>
+                        </tr>
+                        <tr>
+                            <td>když</td>
+                            <td class="n">1303</td>
+                        </tr>
+                        <tr>
+                            <td>fakt</td>
+                            <td class="n">1239</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">1212</td>
+                        </tr>
+                        <tr>
+                            <td>Emetó</td>
+                            <td class="n">1110</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=16294 Average=1629.4" class="columntotal">16294</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td>
+                    <table id="t22">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">1308</td>
+                        </tr>
+                        <tr>
+                            <td>kdyz</td>
+                            <td class="n">1210</td>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">1135</td>
+                        </tr>
+                        <tr>
+                            <td>jsou</td>
+                            <td class="n">855</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">844</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">664</td>
+                        </tr>
+                        <tr>
+                            <td>neni</td>
+                            <td class="n">655</td>
+                        </tr>
+                        <tr>
+                            <td>treba</td>
+                            <td class="n">620</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">550</td>
+                        </tr>
+                        <tr>
+                            <td>jenom</td>
+                            <td class="n">523</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=8364 Average=836.4" class="columntotal">8364</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td>
+                    <table id="t23">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">2463</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">1621</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">1393</td>
+                        </tr>
+                        <tr>
+                            <td>kdyz</td>
+                            <td class="n">1328</td>
+                        </tr>
+                        <tr>
+                            <td>jsou</td>
+                            <td class="n">1136</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">1040</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">958</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">933</td>
+                        </tr>
+                        <tr>
+                            <td>neni</td>
+                            <td class="n">920</td>
+                        </tr>
+                        <tr>
+                            <td>treba</td>
+                            <td class="n">849</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=12641 Average=1264.1" class="columntotal">12641</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td>
+                    <table id="t24">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">1100</td>
+                        </tr>
+                        <tr>
+                            <td>este</td>
+                            <td class="n">896</td>
+                        </tr>
+                        <tr>
+                            <td>alebo</td>
+                            <td class="n">804</td>
+                        </tr>
+                        <tr>
+                            <td>lebo</td>
+                            <td class="n">770</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">676</td>
+                        </tr>
+                        <tr>
+                            <td>toho</td>
+                            <td class="n">612</td>
+                        </tr>
+                        <tr>
+                            <td>spis</td>
+                            <td class="n">588</td>
+                        </tr>
+                        <tr>
+                            <td>stejne</td>
+                            <td class="n">536</td>
+                        </tr>
+                        <tr>
+                            <td>hrat</td>
+                            <td class="n">501</td>
+                        </tr>
+                        <tr>
+                            <td>karty</td>
+                            <td class="n">484</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=6967 Average=696.7" class="columntotal">6967</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td>
+                    <table id="t25">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">2439</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">1157</td>
+                        </tr>
+                        <tr>
+                            <td>když</td>
+                            <td class="n">1003</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">870</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">866</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">759</td>
+                        </tr>
+                        <tr>
+                            <td>ještě</td>
+                            <td class="n">653</td>
+                        </tr>
+                        <tr>
+                            <td>fakt</td>
+                            <td class="n">647</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">642</td>
+                        </tr>
+                        <tr>
+                            <td>není</td>
+                            <td class="n">570</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=9606 Average=960.6" class="columntotal">9606</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td>
+                    <table id="t26">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">3320</td>
+                        </tr>
+                        <tr>
+                            <td>Dildoking</td>
+                            <td class="n">1340</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">1298</td>
+                        </tr>
+                        <tr>
+                            <td>když</td>
+                            <td class="n">1027</td>
+                        </tr>
+                        <tr>
+                            <td>Jakub</td>
+                            <td class="n">915</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">829</td>
+                        </tr>
+                        <tr>
+                            <td>tady</td>
+                            <td class="n">685</td>
+                        </tr>
+                        <tr>
+                            <td>René</td>
+                            <td class="n">608</td>
+                        </tr>
+                        <tr>
+                            <td>jsou</td>
+                            <td class="n">603</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">581</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=11206 Average=1120.6" class="columntotal">11206</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td>
+                    <table id="t27">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">1450</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">498</td>
+                        </tr>
+                        <tr>
+                            <td>Commander</td>
+                            <td class="n">488</td>
+                        </tr>
+                        <tr>
+                            <td>Jakub</td>
+                            <td class="n">482</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">465</td>
+                        </tr>
+                        <tr>
+                            <td>Clit</td>
+                            <td class="n">447</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">417</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">372</td>
+                        </tr>
+                        <tr>
+                            <td>toho</td>
+                            <td class="n">372</td>
+                        </tr>
+                        <tr>
+                            <td>fakt</td>
+                            <td class="n">351</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=5342 Average=534.2" class="columntotal">5342</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td>
+                    <table id="t28">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">656</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">552</td>
+                        </tr>
+                        <tr>
+                            <td>když</td>
+                            <td class="n">478</td>
+                        </tr>
+                        <tr>
+                            <td>dneska</td>
+                            <td class="n">410</td>
+                        </tr>
+                        <tr>
+                            <td>Argumentační</td>
+                            <td class="n">400</td>
+                        </tr>
+                        <tr>
+                            <td>klaun</td>
+                            <td class="n">400</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">363</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">358</td>
+                        </tr>
+                        <tr>
+                            <td>tady</td>
+                            <td class="n">349</td>
+                        </tr>
+                        <tr>
+                            <td>ještě</td>
+                            <td class="n">349</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=4315 Average=431.5" class="columntotal">4315</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td>
+                    <table id="t29">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">1178</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">668</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">604</td>
+                        </tr>
+                        <tr>
+                            <td>Jakub</td>
+                            <td class="n">590</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">586</td>
+                        </tr>
+                        <tr>
+                            <td>jsou</td>
+                            <td class="n">562</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">540</td>
+                        </tr>
+                        <tr>
+                            <td>René</td>
+                            <td class="n">452</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">405</td>
+                        </tr>
+                        <tr>
+                            <td>ještě</td>
+                            <td class="n">370</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=5955 Average=595.5" class="columntotal">5955</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td>
+                    <table id="t30">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">1381</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">347</td>
+                        </tr>
+                        <tr>
+                            <td>kdyz</td>
+                            <td class="n">299</td>
+                        </tr>
+                        <tr>
+                            <td>vole</td>
+                            <td class="n">285</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">277</td>
+                        </tr>
+                        <tr>
+                            <td>tohle</td>
+                            <td class="n">247</td>
+                        </tr>
+                        <tr>
+                            <td>toho</td>
+                            <td class="n">239</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">225</td>
+                        </tr>
+                        <tr>
+                            <td>jsou</td>
+                            <td class="n">217</td>
+                        </tr>
+                        <tr>
+                            <td>fakt</td>
+                            <td class="n">192</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=3709 Average=370.9" class="columntotal">3709</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td>
+                    <table id="t31">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">861</td>
+                        </tr>
+                        <tr>
+                            <td>Jakub</td>
+                            <td class="n">773</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">423</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">396</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">387</td>
+                        </tr>
+                        <tr>
+                            <td>Edit</td>
+                            <td class="n">384</td>
+                        </tr>
+                        <tr>
+                            <td>Dickname</td>
+                            <td class="n">384</td>
+                        </tr>
+                        <tr>
+                            <td>kdyz</td>
+                            <td class="n">365</td>
+                        </tr>
+                        <tr>
+                            <td>neni</td>
+                            <td class="n">333</td>
+                        </tr>
+                        <tr>
+                            <td>nekdo</td>
+                            <td class="n">310</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=4616 Average=461.6" class="columntotal">4616</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td>
+                    <table id="t32">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">415</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">209</td>
+                        </tr>
+                        <tr>
+                            <td>někdo</td>
+                            <td class="n">203</td>
+                        </tr>
+                        <tr>
+                            <td>Jakub</td>
+                            <td class="n">193</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">183</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">167</td>
+                        </tr>
+                        <tr>
+                            <td>Radoslavic</td>
+                            <td class="n">161</td>
+                        </tr>
+                        <tr>
+                            <td>Maly</td>
+                            <td class="n">161</td>
+                        </tr>
+                        <tr>
+                            <td>něco</td>
+                            <td class="n">150</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">149</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=1991 Average=199.1" class="columntotal">1991</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td>
+                    <table id="t33">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">859</td>
+                        </tr>
+                        <tr>
+                            <td>Jakub</td>
+                            <td class="n">322</td>
+                        </tr>
+                        <tr>
+                            <td>Fňukáš</td>
+                            <td class="n">308</td>
+                        </tr>
+                        <tr>
+                            <td>dneska</td>
+                            <td class="n">295</td>
+                        </tr>
+                        <tr>
+                            <td>Princezna</td>
+                            <td class="n">295</td>
+                        </tr>
+                        <tr>
+                            <td>jako</td>
+                            <td class="n">274</td>
+                        </tr>
+                        <tr>
+                            <td>když</td>
+                            <td class="n">272</td>
+                        </tr>
+                        <tr>
+                            <td>někdo</td>
+                            <td class="n">256</td>
+                        </tr>
+                        <tr>
+                            <td>bych</td>
+                            <td class="n">228</td>
+                        </tr>
+                        <tr>
+                            <td>karty</td>
+                            <td class="n">228</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=3337 Average=333.7" class="columntotal">3337</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td>
+                    <table id="t34">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>Jakub</td>
+                            <td class="n">102</td>
+                        </tr>
+                        <tr>
+                            <td>Indulona</td>
+                            <td class="n">100</td>
+                        </tr>
+                        <tr>
+                            <td>Jones</td>
+                            <td class="n">100</td>
+                        </tr>
+                        <tr>
+                            <td>karty</td>
+                            <td class="n">88</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">67</td>
+                        </tr>
+                        <tr>
+                            <td>sent</td>
+                            <td class="n">61</td>
+                        </tr>
+                        <tr>
+                            <td>dnes</td>
+                            <td class="n">61</td>
+                        </tr>
+                        <tr>
+                            <td>toho</td>
+                            <td class="n">58</td>
+                        </tr>
+                        <tr>
+                            <td>attachment</td>
+                            <td class="n">54</td>
+                        </tr>
+                        <tr>
+                            <td>balik</td>
+                            <td class="n">53</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=744 Average=74.4" class="columntotal">744</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td>
+                    <table id="t35">
+                        <tr>
+                            <td class="typeheader" colspan="2">List&lt;ValueTuple&lt;String,Int32&gt;&gt; (10 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>jsem</td>
+                            <td class="n">82</td>
+                        </tr>
+                        <tr>
+                            <td>nebo</td>
+                            <td class="n">50</td>
+                        </tr>
+                        <tr>
+                            <td>taky</td>
+                            <td class="n">48</td>
+                        </tr>
+                        <tr>
+                            <td>když</td>
+                            <td class="n">43</td>
+                        </tr>
+                        <tr>
+                            <td>deck</td>
+                            <td class="n">36</td>
+                        </tr>
+                        <tr>
+                            <td>bude</td>
+                            <td class="n">36</td>
+                        </tr>
+                        <tr>
+                            <td>hrát</td>
+                            <td class="n">35</td>
+                        </tr>
+                        <tr>
+                            <td>jsou</td>
+                            <td class="n">34</td>
+                        </tr>
+                        <tr>
+                            <td>není</td>
+                            <td class="n">34</td>
+                        </tr>
+                        <tr>
+                            <td>karty</td>
+                            <td class="n">33</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=431 Average=43.1" class="columntotal">431</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>nejvic linku
+    <br />Total
+    <br />
+    <div class="spacer">
+        <table id="t36">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">6266</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">2277</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">1746</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">1452</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">1409</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">747</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">682</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">432</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">410</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">249</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">160</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">157</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">102</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">96</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">77</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">15</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=16277 Average=1017.3125" class="columntotal">16277</td>
+            </tr>
+        </table>
+    </div>LinkPerMessage
+    <br />
+    <div class="spacer">
+        <table id="t37">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Double&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Double">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">0.070652970559383</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">0.0484375</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">0.0481004986363261</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">0.046070460704607</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">0.0340267192683583</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">0.0300809406837676</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">0.0278028060239413</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">0.0259114513624926</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">0.0252780767850736</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">0.0137399463806971</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">0.0124895920066611</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">0.00973137354282818</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">0.00815831722420628</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">0.00696439453295029</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">0.00633640552995392</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">0.00436584077194739</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=0.41814729401319376 Average=0.0261" class="columntotal">0.41814729401319376</td>
+            </tr>
+        </table>
+    </div>nejvic gifu
+    <br />Total
+    <br />
+    <div class="spacer">
+        <table id="t38">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">1365</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">1080</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">958</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">767</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">333</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">289</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">229</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">228</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">193</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">149</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">146</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">106</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">55</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">49</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">11</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">0</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=5958 Average=372.375" class="columntotal">5958</td>
+            </tr>
+        </table>
+    </div>GifPerMessage
+    <br />
+    <div class="spacer">
+        <table id="t39">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Double&gt;&gt; (15 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Double">Item2</th>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">0.0361930294906166</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">0.0308863206217533</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">0.0248419150858175</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">0.0170958473865482</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">0.0153912072795336</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">0.0107450582868728</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">0.0105823863636364</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">0.00992426220945417</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">0.00939631870253572</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">0.00796165183613874</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">0.00632351495691491</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">0.00597416576964478</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">0.00342209868794644</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">0.00136258724729568</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">0.000905200789993417</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=0.191005564714702257 Average=0.0127" class="columntotal">0.191005564714702257</td>
+            </tr>
+        </table>
+    </div>nejvic fotek
+    <br />Total
+    <br />
+    <div class="spacer">
+        <table id="t40">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">4345</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">4260</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">3506</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">3339</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">3020</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">2728</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">1217</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">1168</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">1131</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">711</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">657</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">434</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">353</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">150</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">57</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">39</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=27115 Average=1694.6875" class="columntotal">27115</td>
+            </tr>
+        </table>
+    </div>FotkaPerMessage
+    <br />
+    <div class="spacer">
+        <table id="t41">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Double&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Double">Item2</th>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">0.125033512064343</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">0.110055168525752</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">0.0864908503767492</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">0.0858150362268933</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">0.0805360743794279</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">0.0783884669841678</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">0.0557932850559579</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">0.0506392045454545</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">0.0378296706394398</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">0.0337309863463196</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">0.0333055786844296</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">0.0257452574525745</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">0.0175886906363011</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">0.0161486898232785</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">0.015205271160669</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">0.014678418138331</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=0.8669841610400887 Average=0.0542" class="columntotal">0.8669841610400887</td>
+            </tr>
+        </table>
+    </div>nejvic otazek (ztrimovane otazniky)
+    <br />Total
+    <br />
+    <div class="spacer">
+        <table id="t42">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">10340</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">7310</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">6739</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">6520</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">5846</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">4899</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">3801</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">3278</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">3149</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">3128</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">2536</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">2150</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">1649</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">1156</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">575</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">234</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=63310 Average=3956.875" class="columntotal">63310</td>
+            </tr>
+        </table>
+    </div>OtazkyPerMessage
+    <br />
+    <div class="spacer">
+        <table id="t43">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Double&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Double">Item2</th>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">0.259710930442638</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">0.254461565247671</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">0.220798794272796</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">0.217942219969589</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">0.194837635303913</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">0.180113636363636</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">0.136230916826562</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">0.135697827518104</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">0.132001771835864</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">0.131144599928238</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">0.127379356568365</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">0.116589804593683</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">0.0974326788009205</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">0.086751701148792</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">0.074398249452954</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">0.0558202616128629</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=2.4213119498865884 Average=0.1513" class="columntotal">2.4213119498865884</td>
+            </tr>
+        </table>
+    </div>nejvic smajliku (:], :), :(, :D, .), :-D)
+    <br />Total
+    <br />
+    <div class="spacer">
+        <table id="t44">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">7759</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">7121</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">6284</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">4372</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">4028</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">3529</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">2969</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">2827</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">2637</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">1895</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">1729</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">931</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">586</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">493</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">370</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">30</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=47560 Average=2972.5" class="columntotal">47560</td>
+            </tr>
+        </table>
+    </div>smajlikyPerMessage
+    <br />
+    <div class="spacer">
+        <table id="t45">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Double&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Double">Item2</th>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">0.420505871725384</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">0.308076602830974</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">0.139199856476498</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">0.131974705940172</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">0.122798295454545</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">0.120444089368853</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">0.119558651793984</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">0.114781927396187</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">0.112140193086711</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">0.106413819898981</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">0.0947386058981233</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">0.052695976196435</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">0.0405694535878868</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">0.0397916267322155</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">0.0377139915046982</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">0.00304105423213381</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=1.96444472212378161 Average=0.1228" class="columntotal">1.96444472212378161</td>
+            </tr>
+        </table>
+    </div>rozdal nejvice prezdivek (X set the nickname for Y to Z)
+    <br />
+    <div class="spacer">
+        <table id="t46">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">108</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">99</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">96</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">65</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">38</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">31</td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td class="n">29</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">21</td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">15</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">15</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">10</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">3</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">3</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">0</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=536 Average=33.5" class="columntotal">536</td>
+            </tr>
+        </table>
+    </div>byla mu nejcasteji prezdivka zmenena
+    <br />
+    <div class="spacer">
+        <table id="t47">
+            <tr>
+                <td class="typeheader" colspan="2">IOrderedEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (51 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td class="n">119</td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td class="n">83</td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td class="n">45</td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td class="n">40</td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td class="n">31</td>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td class="n">31</td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td class="n">29</td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td class="n">26</td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td class="n">19</td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td class="n">16</td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td class="n">16</td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td class="n">12</td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td class="n">9</td>
+            </tr>
+            <tr>
+                <td>Jakub Kvíkal Obecný</td>
+                <td class="n">6</td>
+            </tr>
+            <tr>
+                <td>Daniel Ditrych</td>
+                <td class="n">5</td>
+            </tr>
+            <tr>
+                <td>Ota Svátek</td>
+                <td class="n">3</td>
+            </tr>
+            <tr>
+                <td>Pavel Podlešák</td>
+                <td class="n">3</td>
+            </tr>
+            <tr>
+                <td>Zdeněk Hlavsa</td>
+                <td class="n">3</td>
+            </tr>
+            <tr>
+                <td>Kristýna Kolikokoli Routnerová</td>
+                <td class="n">3</td>
+            </tr>
+            <tr>
+                <td>Milan Kladiva</td>
+                <td class="n">3</td>
+            </tr>
+            <tr>
+                <td>Addlein Thousandson</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Jiří Hartvich</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Martin Bém</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Bartolomej Donowen</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Tomáš Pejša</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Daniel Balvín</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>ブレすタク ミロスラフ</td>
+                <td class="n">2</td>
+            </tr>
+            <tr>
+                <td>Jakub Pokorák</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>a participant</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Lukáš IA Seyček</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Dalibor Lošťák</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Filip Krischke</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Stin Jan</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Miroslav Horsky</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Martin Fox</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Jaroslav Artex Krupička</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Martin Malý</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Jan Šmidberský to Ass</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Vladan Kváč</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Lubos Novotny</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Honza Svelch</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Martin von Fučákovice</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Matěj Vyšata</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Milan Kladiva to To není vybrátor,</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Christian Vogl</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Adam Rut</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Matouš Zíka</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>David Březina</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td>Martin Pavlík</td>
+                <td class="n">1</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=540 Average=10.5882" class="columntotal">540</td>
+            </tr>
+        </table>
+    </div>hodinovy casovy snimek celkovy
+    <br />
+    <div class="spacer">
+        <table id="t48">
+            <tr>
+                <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="System.Int32">Item2</th>
+            </tr>
+            <tr>
+                <td>0 - 1</td>
+                <td class="n">682</td>
+            </tr>
+            <tr>
+                <td>1 - 2</td>
+                <td class="n">241</td>
+            </tr>
+            <tr>
+                <td>2 - 3</td>
+                <td class="n">101</td>
+            </tr>
+            <tr>
+                <td>3 - 4</td>
+                <td class="n">82</td>
+            </tr>
+            <tr>
+                <td>4 - 5</td>
+                <td class="n">443</td>
+            </tr>
+            <tr>
+                <td>5 - 6</td>
+                <td class="n">3393</td>
+            </tr>
+            <tr>
+                <td>6 - 7</td>
+                <td class="n">15218</td>
+            </tr>
+            <tr>
+                <td>7 - 8</td>
+                <td class="n">33342</td>
+            </tr>
+            <tr>
+                <td>8 - 9</td>
+                <td class="n">44967</td>
+            </tr>
+            <tr>
+                <td>9 - 10</td>
+                <td class="n">50538</td>
+            </tr>
+            <tr>
+                <td>10 - 11</td>
+                <td class="n">50014</td>
+            </tr>
+            <tr>
+                <td>11 - 12</td>
+                <td class="n">49067</td>
+            </tr>
+            <tr>
+                <td>12 - 13</td>
+                <td class="n">52012</td>
+            </tr>
+            <tr>
+                <td>13 - 14</td>
+                <td class="n">45304</td>
+            </tr>
+            <tr>
+                <td>14 - 15</td>
+                <td class="n">43403</td>
+            </tr>
+            <tr>
+                <td>15 - 16</td>
+                <td class="n">34268</td>
+            </tr>
+            <tr>
+                <td>16 - 17</td>
+                <td class="n">23084</td>
+            </tr>
+            <tr>
+                <td>17 - 18</td>
+                <td class="n">14501</td>
+            </tr>
+            <tr>
+                <td>18 - 19</td>
+                <td class="n">11827</td>
+            </tr>
+            <tr>
+                <td>19 - 20</td>
+                <td class="n">10487</td>
+            </tr>
+            <tr>
+                <td>20 - 21</td>
+                <td class="n">10228</td>
+            </tr>
+            <tr>
+                <td>21 - 22</td>
+                <td class="n">8095</td>
+            </tr>
+            <tr>
+                <td>22 - 23</td>
+                <td class="n">5263</td>
+            </tr>
+            <tr>
+                <td>23 - 0</td>
+                <td class="n">1718</td>
+            </tr>
+            <tr>
+                <td title="Totals" class="columntotal"></td>
+                <td title="Total=508278 Average=21178.25" class="columntotal">508278</td>
+            </tr>
+        </table>
+    </div>hodinovy casovy snimek (osobni)
+    <br />
+    <div class="spacer">
+        <table id="t49">
+            <tr>
+                <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt;&gt;&gt; (16 items)<span class="fixedextenser">4</span></td>
+            </tr>
+            <tr>
+                <th title="System.String">Item1</th>
+                <th title="IEnumerable&lt;ValueTuple&lt;System.String,System.Int32&gt;&gt;">Item2</th>
+            </tr>
+            <tr>
+                <td>Jakub Michalik</td>
+                <td>
+                    <table id="t50">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">63</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">15</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">6</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">15</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">44</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">754</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">2566</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">6174</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">9328</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">8924</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">7426</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">7625</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">9807</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">8691</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">8786</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">6444</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">3373</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">1690</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">1660</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">1741</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">1520</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">1098</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">703</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">234</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=88687 Average=3695.2917" class="columntotal">88687</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jakub Král</td>
+                <td>
+                    <table id="t51">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">76</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">23</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">4</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">127</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">1275</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">3972</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">5770</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">6836</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">6525</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">6657</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">6104</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">5378</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">5279</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">5067</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">3517</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">2236</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">1867</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">1862</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">1628</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">1449</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">1024</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">242</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=66918 Average=2788.25" class="columntotal">66918</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Otto Hartvich</td>
+                <td>
+                    <table id="t52">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">32</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">20</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">4</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">5</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">19</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">205</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">2574</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">5102</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">4964</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">5634</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">6114</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">5743</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">6776</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">5795</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">4498</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">1899</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">1630</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">981</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">873</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">949</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">939</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">795</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">396</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">90</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=56037 Average=2334.875" class="columntotal">56037</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jakub Vinni</td>
+                <td>
+                    <table id="t53">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">11</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">140</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">1032</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">3568</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">5319</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">4711</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">4643</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">5721</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">5423</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">4342</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">3241</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">3543</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">3484</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">2396</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">1924</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">1504</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">1392</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">1493</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">1109</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">672</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">70</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=55740 Average=2322.5" class="columntotal">55740</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Aladar Grülhoven</td>
+                <td>
+                    <table id="t54">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">39</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">7</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">3</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">71</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">921</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">2587</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">3352</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">3719</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">3596</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">3659</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">3988</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">3676</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">3313</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">2900</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">1684</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">759</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">516</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">446</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">449</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">318</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">195</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">100</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=36299 Average=1512.4583" class="columntotal">36299</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Michal Žďánský</td>
+                <td>
+                    <table id="t55">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">42</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">16</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">3</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">2</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">53</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">306</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">1203</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">2359</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">3483</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">3986</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">4138</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">4437</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">3536</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">3806</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">3015</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">1855</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">927</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">780</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">530</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">519</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">502</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">332</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">131</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=35961 Average=1498.375" class="columntotal">35961</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Robert Tuharský</td>
+                <td>
+                    <table id="t56">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">16</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">5</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">79</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">484</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">1427</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">2482</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">2895</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">3284</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">2776</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">2712</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">3110</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">2724</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">2166</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">1553</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">1314</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">741</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">615</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">515</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">722</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">527</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">275</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">97</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=30521 Average=1271.7083" class="columntotal">30521</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Vojta Kotek</td>
+                <td>
+                    <table id="t57">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">93</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">21</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">11</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">3</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">31</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">162</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">705</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">1648</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">2869</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">3524</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">3371</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">2537</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">2584</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">2088</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">1997</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">1637</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">1516</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">1344</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">922</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">785</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">783</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">548</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">379</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">282</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=29840 Average=1243.3333" class="columntotal">29840</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jerry Siera</td>
+                <td>
+                    <table id="t58">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">22</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">2</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">2</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">89</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">784</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">2333</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">3213</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">2916</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">2154</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">2437</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">2342</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">2763</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">2348</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">1420</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">629</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">439</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">238</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">262</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">200</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">151</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">88</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=24833 Average=1034.7083" class="columntotal">24833</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jakub Matas</td>
+                <td>
+                    <table id="t59">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">4</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">6</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">55</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">578</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">1431</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">2569</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">2499</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">2356</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">2837</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">2654</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">2346</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">2294</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">1413</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">727</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">263</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">247</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">226</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">219</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">152</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">84</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">12</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=22974 Average=957.25" class="columntotal">22974</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Petr Knows</td>
+                <td>
+                    <table id="t60">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">63</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">50</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">19</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">15</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">49</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">218</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">481</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">897</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">1067</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">953</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">1041</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">1218</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">1333</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">1376</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">1223</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">1038</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">802</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">703</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">637</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">619</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">605</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">596</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">440</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">95</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=15538 Average=647.4167" class="columntotal">15538</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jiří Kracík</td>
+                <td>
+                    <table id="t61">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">112</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">62</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">40</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">17</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">11</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">40</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">64</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">211</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">524</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">946</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">1154</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">1416</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">1558</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">1357</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">1220</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">1274</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">1084</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">768</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">539</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">495</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">435</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">362</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">264</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">127</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=14080 Average=586.6667" class="columntotal">14080</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Radek Schejbal</td>
+                <td>
+                    <table id="t62">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">67</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">1</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">3</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">6</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">121</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">494</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">863</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">1393</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">1308</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">1304</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">1189</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">1078</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">941</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">877</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">578</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">521</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">486</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">239</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">267</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">197</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">145</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">73</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=12152 Average=506.3333" class="columntotal">12152</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Lukáš Novotný</td>
+                <td>
+                    <table id="t63">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">19</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">7</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">2</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">4</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">43</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">109</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">331</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">560</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">697</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">681</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">783</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">934</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">931</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">963</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">971</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">712</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">622</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">466</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">349</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">244</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">173</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">139</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">96</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">29</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=9865 Average=411.0417" class="columntotal">9865</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Peter Lech</td>
+                <td>
+                    <table id="t64">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">4</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">7</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">3</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">14</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">71</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">111</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">194</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">314</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">263</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">179</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">133</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">188</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">189</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">153</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">118</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">77</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">59</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">32</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">50</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">27</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">19</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">9</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=2214 Average=92.25" class="columntotal">2214</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>Jakub Sýkora</td>
+                <td>
+                    <table id="t65">
+                        <tr>
+                            <td class="typeheader" colspan="2">IEnumerable&lt;ValueTuple&lt;String,Int32&gt;&gt; (24 items)<span class="fixedextenser">4</span></td>
+                        </tr>
+                        <tr>
+                            <th title="System.String">Item1</th>
+                            <th title="System.Int32">Item2</th>
+                        </tr>
+                        <tr>
+                            <td>0 - 1</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>1 - 2</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>2 - 3</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>3 - 4</td>
+                            <td class="n">0</td>
+                        </tr>
+                        <tr>
+                            <td>4 - 5</td>
+                            <td class="n">6</td>
+                        </tr>
+                        <tr>
+                            <td>5 - 6</td>
+                            <td class="n">33</td>
+                        </tr>
+                        <tr>
+                            <td>6 - 7</td>
+                            <td class="n">47</td>
+                        </tr>
+                        <tr>
+                            <td>7 - 8</td>
+                            <td class="n">132</td>
+                        </tr>
+                        <tr>
+                            <td>8 - 9</td>
+                            <td class="n">167</td>
+                        </tr>
+                        <tr>
+                            <td>9 - 10</td>
+                            <td class="n">119</td>
+                        </tr>
+                        <tr>
+                            <td>10 - 11</td>
+                            <td class="n">183</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 12</td>
+                            <td class="n">68</td>
+                        </tr>
+                        <tr>
+                            <td>12 - 13</td>
+                            <td class="n">120</td>
+                        </tr>
+                        <tr>
+                            <td>13 - 14</td>
+                            <td class="n">95</td>
+                        </tr>
+                        <tr>
+                            <td>14 - 15</td>
+                            <td class="n">18</td>
+                        </tr>
+                        <tr>
+                            <td>15 - 16</td>
+                            <td class="n">27</td>
+                        </tr>
+                        <tr>
+                            <td>16 - 17</td>
+                            <td class="n">63</td>
+                        </tr>
+                        <tr>
+                            <td>17 - 18</td>
+                            <td class="n">20</td>
+                        </tr>
+                        <tr>
+                            <td>18 - 19</td>
+                            <td class="n">27</td>
+                        </tr>
+                        <tr>
+                            <td>19 - 20</td>
+                            <td class="n">16</td>
+                        </tr>
+                        <tr>
+                            <td>20 - 21</td>
+                            <td class="n">41</td>
+                        </tr>
+                        <tr>
+                            <td>21 - 22</td>
+                            <td class="n">5</td>
+                        </tr>
+                        <tr>
+                            <td>22 - 23</td>
+                            <td class="n">5</td>
+                        </tr>
+                        <tr>
+                            <td>23 - 0</td>
+                            <td class="n">9</td>
+                        </tr>
+                        <tr>
+                            <td title="Totals" class="columntotal"></td>
+                            <td title="Total=1201 Average=50.0417" class="columntotal">1201</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
