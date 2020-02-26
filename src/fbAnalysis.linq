@@ -36,8 +36,10 @@ void Main()
 	}
 
 	$"participants: {data.SelectMany(d => d.participants).Select(d => d.name).Distinct().Count()}".Dump();
-	
+
 	var messages = data.SelectMany(d => d.messages).Where(d => d != null).ToList();
+
+	$"prvni zprava: {messages.Min(d => d.Timestamp)}".Dump();
 
 	$"zprav celkem: {messages.Count()}".Dump();
 	
@@ -47,9 +49,15 @@ void Main()
 	}
 
 	var messageMap = messages.GroupBy(d => d.sender_name).OrderByDescending(d => d.Count()).Take(16).ToDictionary(m => m.Key, m => m.ToList());
-	
+
 	"zpravy per user".Dump();
 	messageMap.Select(m => (m.Key, m.Value.Count(), (int)(((double)m.Value.Count() / (double)messages.Count()) * 100))).OrderByDescending(d => d.Item2).Dump();
+
+	"prumerna delka zpravy per user".Dump();
+	messageMap.Select(m => (m.Key, (double)m.Value.Where(d => d.content != null).Sum(d => d.content.Length) / (double)m.Value.Count())).OrderByDescending(d => d.Item2).Dump();
+
+	"pocet pismenek per user".Dump();
+	messageMap.Select(m => (m.Key, (double)m.Value.Where(d => d.content != null && !d.content.Contains("https")).Sum(d => d.content.Length))).OrderByDescending(d => d.Item2).Dump();
 
 	"nejvic reakci dostal".Dump();
 	{
