@@ -5,7 +5,7 @@
 
 void Main()
 {
-	var dir = @"D:\Downloads\fb_AllMessages\messages\inbox\Karetnigaychat_SlenQ6cAJA";
+	var dir = @".";
 	
 	var data = new List<Data>();
 	
@@ -35,6 +35,15 @@ void Main()
 		}
 	}
 
+	var pollMessages = " voted for ";
+	var reminderMessages = " updated the reminder:";
+	var nicknameMessages = " set the nickname for ";
+	var links = "http";
+	var systemMessages = new List<string>()
+	{
+		pollMessages, reminderMessages, nicknameMessages, links
+	};
+
 	$"participants: {data.SelectMany(d => d.participants).Select(d => d.name).Distinct().Count()}".Dump();
 
 	var messages = data.SelectMany(d => d.messages).Where(d => d != null).ToList();
@@ -49,15 +58,16 @@ void Main()
 	}
 
 	var messageMap = messages.GroupBy(d => d.sender_name).OrderByDescending(d => d.Count()).Take(16).ToDictionary(m => m.Key, m => m.ToList());
+	var plainMessages = messages.GroupBy(d => d.sender_name).OrderByDescending(d => d.Count()).Take(16).ToDictionary(m => m.Key, m => m.Where(s => s.type == "Generic" && s.content != null && systemMessages.All(sm => !s.content.Contains(sm))).ToList());
 
 	"zpravy per user".Dump();
 	messageMap.Select(m => (m.Key, m.Value.Count(), (int)(((double)m.Value.Count() / (double)messages.Count()) * 100))).OrderByDescending(d => d.Item2).Dump();
 
 	"prumerna delka zpravy per user".Dump();
-	messageMap.Select(m => (m.Key, (double)m.Value.Where(d => d.content != null).Sum(d => d.content.Length) / (double)m.Value.Count())).OrderByDescending(d => d.Item2).Dump();
+	plainMessages.Select(m => (m.Key, (double)m.Value.Where(d => d.content != null).Sum(d => d.content.Length) / (double)m.Value.Count())).OrderByDescending(d => d.Item2).Dump();
 
 	"pocet pismenek per user".Dump();
-	messageMap.Select(m => (m.Key, (double)m.Value.Where(d => d.content != null && !d.content.Contains("https")).Sum(d => d.content.Length))).OrderByDescending(d => d.Item2).Dump();
+	plainMessages.Select(m => (m.Key, (double)m.Value.Where(d => d.content != null).Sum(d => d.content.Length))).OrderByDescending(d => d.Item2).Dump();
 
 	"nejvic reakci dostal".Dump();
 	{
@@ -88,19 +98,19 @@ void Main()
 	{
 		"Total".Dump();
 
-		messageMap.Select(m => (m.Key, m.Value.Select(v => v.content).Where(d => d != null && !d.Contains("https")).SelectMany(v => v.Split(splitChars, StringSplitOptions.RemoveEmptyEntries)).Distinct().Count())).OrderByDescending(d => d.Item2).Dump();
+		plainMessages.Select(m => (m.Key, m.Value.Select(v => v.content).SelectMany(v => v.Split(splitChars, StringSplitOptions.RemoveEmptyEntries)).Distinct().Count())).OrderByDescending(d => d.Item2).Dump();
 	}
 
 	var ignored = new List<string>(){
 		
 	};
 
-	"top 30 nejpouzivanejsich slov (delsi nez 3 znaky)".Dump();
+	"top 30 nejpouzivanejsich slov (delsi nez 1 znak)".Dump();
 	{
 		messages.Select(m => m.content)
-		.Where(d => d != null && !d.Contains("https"))
+		.Where(s => s != null && systemMessages.All(sm => !s.Contains(sm)))
 		.SelectMany(v => v.Split(splitChars, StringSplitOptions.RemoveEmptyEntries))
-		.Where(v => v.Length > 3)
+		.Where(v => v.Length > 1)
 		.GroupBy(v => v)
 		.Select(v => (v.Key, v.Count()))
 		.OrderByDescending(v => v.Item2)
@@ -108,20 +118,20 @@ void Main()
 		.Dump();
 	}
 
-	"top 30 nejpouzivanejsich slov (delsi nez 3 znaky - prd tam stejne nebyl)".Dump();
+	"top 16 nejpouzivanejsich slov (delsi nez 1 znak - prd tam stejne nebyl)".Dump();
 	{
 		var result = new List<(string, List<(string, int)>)>();
 
 		foreach (var pair in messageMap)
 		{
 			var frequencyAnalysis = pair.Value.Select(m => m.content)
-			.Where(d => d != null && !d.Contains("https"))
+			.Where(s => s != null && systemMessages.All(sm => !s.Contains(sm)))
 			.SelectMany(v => v.Split(splitChars, StringSplitOptions.RemoveEmptyEntries))
-			.Where(v => v.Length > 3)
+			.Where(v => v.Length > 1)
 			.GroupBy(v => v)
 			.Select(v => (v.Key, v.Count()))
 			.OrderByDescending(v => v.Item2)
-			.Take(10).ToList();
+			.Take(16).ToList();
 			
 			result.Add((pair.Key, frequencyAnalysis));
 		}
@@ -170,7 +180,7 @@ void Main()
 
 	$"nejvic smajliku ({string.Join(", ", emojis)})".Dump();
 	{
-		var otazniky = messageMap.Select(k => (k.Key, k.Value.Where(m => m.type == "Generic" && m.content != null && !m.content.Contains("http")).Sum(m => emojis.Sum(e => m.content.Split(new [] { e }, StringSplitOptions.None).Length - 1))));
+		var otazniky = plainMessages.Select(k => (k.Key, k.Value.Where(m => m.type == "Generic" && m.content != null && !m.content.Contains("http")).Sum(m => emojis.Sum(e => m.content.Split(new [] { e }, StringSplitOptions.None).Length - 1))));
 		"Total".Dump();
 		otazniky.OrderByDescending(d => d.Item2).Dump();
 		"smajlikyPerMessage".Dump();
